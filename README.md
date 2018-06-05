@@ -14,10 +14,10 @@ It renders markdown tables as HTML, as defined by [python-markdown](https://pyth
 ## Usage
 
 ### Quick version
-Add `sphinx-markdown-tables` to `extensions` in `conf.py`, like so:
+Add `sphinx_markdown_tables` to `extensions` in `conf.py`, like so:
 
     extensions = [
-        'sphinx-markdown-tables',
+        'sphinx_markdown_tables',
     ]
 
 ### Longer version
@@ -33,10 +33,10 @@ In `conf.py`, configure `source_parsers` and `source_suffix`:
 
     source_suffix = ['.rst', '.md']
 
-Once Sphinx is configured appropriately, add `sphinx-markdown-tables` to `extensions`, like so:
+Once Sphinx is configured appropriately, add `sphinx_markdown_tables` to `extensions`, like so:
 
     extensions = [
-        'sphinx-markdown-tables',
+        'sphinx_markdown_tables',
     ]
 
 For more information on Sphinx and markdown, see the
