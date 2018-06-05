@@ -3,7 +3,7 @@ import markdown
 
 def setup(app):
     app.connect('source-read', process_tables)
-    return {'version': '0.0.1'}
+    return {'version': '0.0.3'}
 
 
 def process_tables(app, docname, source):
