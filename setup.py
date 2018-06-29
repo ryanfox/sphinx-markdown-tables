@@ -9,7 +9,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='sphinx-markdown-tables',
-    version='0.0.3',
+    version='0.0.4',
     description='A Sphinx extension for rendering tables written in markdown',
     long_description=long_description,
     long_description_content_type='text/markdown',
