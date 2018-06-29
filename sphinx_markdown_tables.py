@@ -1,3 +1,5 @@
+import re
+
 import markdown
 
 
@@ -20,7 +22,7 @@ def process_tables(app, docname, source):
     table_processor = markdown.extensions.tables.TableProcessor(md.parser)
 
     raw_markdown = source[0]
-    blocks = raw_markdown.split('\n\n')  # double-newline is the same delimiter used by markdown.Markdown
+    blocks = re.split(r'\n{2,}', raw_markdown)
 
     for i, block in enumerate(blocks):
         if table_processor.test(None, block):
