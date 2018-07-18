@@ -18,7 +18,7 @@ def process_tables(app, docname, source):
     This function is called by sphinx for each document. `source` is a 1-item list. To update the document, replace
     element 0 in `source`.
     """
-    md = markdown.Markdown(extensions=['markdown.extensions.tables'])
+    md = markdown.Markdown(extensions=['markdown.extensions.tables'], safe_mode='escape')
     table_processor = markdown.extensions.tables.TableProcessor(md.parser)
 
     raw_markdown = source[0]
