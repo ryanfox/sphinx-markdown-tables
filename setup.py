@@ -2,6 +2,8 @@ from setuptools import setup
 from codecs import open
 from os import path
 
+import sphinx_markdown_tables
+
 here = path.abspath(path.dirname(__file__))
 
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
@@ -9,7 +11,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='sphinx-markdown-tables',
-    version='0.0.5',
+    version=sphinx_markdown_tables.__version__,
     description='A Sphinx extension for rendering tables written in markdown',
     long_description=long_description,
     long_description_content_type='text/markdown',
