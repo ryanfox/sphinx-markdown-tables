@@ -3,9 +3,6 @@ import re
 import markdown
 
 
-__version__ = '0.0.6'
-
-
 def setup(app):
     app.connect('source-read', process_tables)
     return {'version': __version__}
