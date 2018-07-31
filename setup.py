@@ -2,7 +2,7 @@ from setuptools import setup
 from codecs import open
 from os import path
 
-import __version__
+from sphinx_markdown_tables import __version__
 
 here = path.abspath(path.dirname(__file__))
 
@@ -27,7 +27,7 @@ setup(
         'Programming Language :: Python :: 3.6',
     ],
     keywords='sphinx markdown tables',
-    packages=['.'],
+    packages=['sphinx_markdown_tables'],
     install_requires=['markdown==2.6.11'],
     project_urls={
         'Bug Reports': 'https://github.com/ryanfox/sphinx-markdown-tables/issues',

@@ -2,6 +2,8 @@ import re
 
 import markdown
 
+from sphinx_markdown_tables import __version__
+
 
 def setup(app):
     app.connect('source-read', process_tables)
