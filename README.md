@@ -1,6 +1,3 @@
-[![Build Status](https://cd.screwdriver.cd/pipelines/3023/badge)](https://cd.screwdriver.cd/pipelines/3023)
-[![Code Coverage](https://codecov.io/gh/dwighthubbard/sphinx-markdown-tables/branch/master/graph/badge.svg)](https://codecov.io/gh/dwighthubbard/sphinx-markdown-tables)
-
 # sphinx-markdown-tables
 
 A [Sphinx](http://www.sphinx-doc.org/en/master/) extension for rendering markdown tables.
