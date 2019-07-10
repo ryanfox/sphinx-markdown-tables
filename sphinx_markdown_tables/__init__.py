@@ -6,7 +6,7 @@ import pkg_resources
 
 
 # Get the version number from the package metadata
-__version__: str = pkg_resources.get_distribution("dhubbard-sphinx-markdown-tables").version
+__version__: str = pkg_resources.get_distribution("sphinx-markdown-tables").version
 
 
 def setup(app):
