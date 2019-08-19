@@ -6,7 +6,7 @@ from sphinx_markdown_tables import __version__
 def setup(app):
     app.connect('source-read', process_tables)
     return {'version': __version__,
-            'parallel_read_safe': False}
+            'parallel_read_safe': True}
 
 
 def process_tables(app, docname, source):
