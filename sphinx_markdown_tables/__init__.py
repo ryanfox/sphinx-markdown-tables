@@ -1,9 +1,16 @@
+"""sphinx markdown table extension module"""
 import re
 
-from sphinx_markdown_tables import __version__
+import markdown
+import pkg_resources
+
+
+# Get the version number from the package metadata
+__version__: str = pkg_resources.get_distribution("sphinx-markdown-tables").version
 
 
 def setup(app):
+    """Sphinx extension setup for sphinx-markdown-table extention"""
     app.connect('source-read', process_tables)
     return {'version': __version__,
             'parallel_read_safe': True}
@@ -11,15 +18,15 @@ def setup(app):
 
 def process_tables(app, docname, source):
     """
-    Convert markdown tables to html, since recommonmark can't. This requires 3 steps:
+    Convert markdown tables to html, since recommonmark can't.
+    This requires 3 steps:
         Snip out table sections from the markdown
         Convert them to html
         Replace the old markdown table with an html table
 
-    This function is called by sphinx for each document. `source` is a 1-item list. To update the document, replace
-    element 0 in `source`.
+    This function is called by sphinx for each document. `source` is a 1-item list.
+    To update the document, replace element 0 in `source`.
     """
-    import markdown
     md = markdown.Markdown(extensions=['markdown.extensions.tables'])
     table_processor = markdown.extensions.tables.TableProcessor(md.parser)
 
@@ -29,7 +36,9 @@ def process_tables(app, docname, source):
     for i, block in enumerate(blocks):
         if table_processor.test(None, block):
             html = md.convert(block)
-            styled = html.replace('<table>', '<table border="1" class="docutils">', 1)  # apply styling
+
+            # apply styling
+            styled = html.replace('<table>', '<table border="1" class="docutils">', 1)
             blocks[i] = styled
 
     # re-assemble into markdown-with-tables-replaced

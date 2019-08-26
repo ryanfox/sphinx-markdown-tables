@@ -1,0 +1,13 @@
+# Pycharm
+/.idea
+
+# CI/CD repots and caches
+/.coverage
+/cobertura.xml
+/pytest_*.xml
+/.pytest_cache
+/.tox
+
+# Package build/generation artifacts
+*.egg-info
+/build
