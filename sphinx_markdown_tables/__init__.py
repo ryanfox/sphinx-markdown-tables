@@ -42,11 +42,12 @@ def render_file_links(block, source_suffix=['.md','.rst']):
     """Render file links inside the table block,
     replacing the file extension in the source_suffix list by '.html'.
     """
-    link_pattern = re.compile(
+    re_link_pattern = re.compile(
         "\] *\( *(?P<link>.*)({}) *\)".format(
             "|".join(source_suffix).replace('.','\.')))
-    rendered_block, n = re.subn(link_pattern, "](\g<link>.html)", block)
-    while n > 0:
-        rendered_block, n = re.subn(link_pattern, "](\g<link>.html)",
-                                    rendered_block)
+    rendered_block, keep_rendering = re_link_pattern.subn(
+        "](\g<link>.html)", block)
+    while keep_rendering:
+        rendered_block, keep_rendering = re_link_pattern.subn(
+            "](\g<link>.html)", rendered_block)
     return rendered_block
