@@ -29,7 +29,7 @@ def process_tables(app, docname, source):
     for i, block in enumerate(blocks):
         if table_processor.test(None, block):
             html = md.convert(
-                render_file_links(block)
+                replace_linked_filenames(block, app.config.source_suffix)
             )
             styled = html.replace('<table>', '<table border="1" class="docutils">', 1)  # apply styling
             blocks[i] = styled
@@ -38,16 +38,16 @@ def process_tables(app, docname, source):
     # must replace element 0 for changes to persist
     source[0] = '\n\n'.join(blocks)
     
-def render_file_links(block, source_suffix=['.md','.rst']):
-    """Render file links inside the table block,
-    replacing the file extension in the source_suffix list by '.html'.
+
+def replace_linked_filenames(block, source_suffix):
+    """Replace linked filenames's extension inside the table block.
+    Only the filenames which the extension figures in the source_suffix
+    list are rendered so the extension is replaced by '.html'.
     """
     re_link_pattern = re.compile(
-        "\] *\( *(?P<link>.*)({}) *\)".format(
-            "|".join(source_suffix).replace('.','\.')))
-    rendered_block, keep_rendering = re_link_pattern.subn(
-        "](\g<link>.html)", block)
-    while keep_rendering:
-        rendered_block, keep_rendering = re_link_pattern.subn(
-            "](\g<link>.html)", rendered_block)
+        "\[(?P<link_name>[^\]]*)\] *\( *(?P<link>.*)({}) *\)"
+        "".format("|".join([ext.replace('.','\.') for ext in source_suffix]))
+    )
+    rendered_block, n_sub = re_link_pattern.subn(
+        "[\g<link_name>](\g<link>.html)", block)
     return rendered_block
