@@ -42,7 +42,7 @@ def process_tables(app, docname, source):
 def replace_linked_filenames(block, source_suffix):
     """Replace linked filenames's extension inside the table block.
     Only the filenames which the extension figures in the source_suffix
-    list are rendered so the extension is replaced by '.html'.
+    list are rendered, so the extension is replaced by '.html'.
     """
     re_link_pattern = re.compile(
         "\[(?P<link_name>[^\]]*)\] *\( *(?P<link>.*)({}) *\)"
