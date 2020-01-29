@@ -28,10 +28,26 @@ def process_tables(app, docname, source):
 
     for i, block in enumerate(blocks):
         if table_processor.test(None, block):
-            html = md.convert(block)
+            html = md.convert(
+                replace_linked_filenames(block, app.config.source_suffix)
+            )
             styled = html.replace('<table>', '<table border="1" class="docutils">', 1)  # apply styling
             blocks[i] = styled
 
     # re-assemble into markdown-with-tables-replaced
     # must replace element 0 for changes to persist
     source[0] = '\n\n'.join(blocks)
+    
+
+def replace_linked_filenames(block, source_suffix):
+    """Replace linked filenames's extension inside the table block.
+    Only the filenames which the extension figures in the source_suffix
+    list are rendered, so the extension is replaced by '.html'.
+    """
+    re_link_pattern = re.compile(
+        "\[(?P<link_name>[^\]]*)\] *\( *(?P<link>.*)({}) *\)"
+        "".format("|".join([ext.replace('.','\.') for ext in source_suffix]))
+    )
+    html_ref_block, n_sub = re_link_pattern.subn(
+        "[\g<link_name>](\g<link>.html)", block)
+    return html_ref_block
