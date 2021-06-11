@@ -24,7 +24,7 @@ def process_tables(app, docname, source):
     table_processor = markdown.extensions.tables.TableProcessor(md.parser)
 
     raw_markdown = source[0]
-    blocks = re.split(r'(\n{2,})', raw_markdown)
+    blocks = re.split(r'((?:.*\|.*\n){2,}(?:.*\|.*)*)', raw_markdown)
 
     for i, block in enumerate(blocks):
         if table_processor.test(None, block):
