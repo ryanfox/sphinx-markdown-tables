@@ -21,7 +21,7 @@ def process_tables(app, docname, source):
     """
     import markdown
     md = markdown.Markdown(extensions=['markdown.extensions.tables'])
-    table_processor = markdown.extensions.tables.TableProcessor(md.parser)
+    table_processor = markdown.extensions.tables.TableProcessor(md.parser, {})
 
     raw_markdown = source[0]
     blocks = re.split(r'(\n{2,})', raw_markdown)
