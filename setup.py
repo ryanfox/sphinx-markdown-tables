@@ -28,7 +28,7 @@ setup(
     ],
     keywords='sphinx markdown tables',
     packages=['sphinx_markdown_tables'],
-    install_requires=['markdown>=3.0.1'],
+    install_requires=['markdown>=3.4'],
     data_files=[('', ['LICENSE'])],
     project_urls={
         'Bug Reports': 'https://github.com/ryanfox/sphinx-markdown-tables/issues',
